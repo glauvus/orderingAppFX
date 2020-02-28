@@ -1,0 +1,17 @@
+.button {
+    -fx-font-weight: bold;
+}
+
+#cancelButton {
+    -fx-background-color: #fc2f2f;
+}
+
+#proceedButton {
+    -fx-background-color: #f7f720;
+}
+
+#finishButton {
+    -fx-background-color: #a2ff3f;
+}
+
+

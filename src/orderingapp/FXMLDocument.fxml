@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="600.0" prefWidth="680.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="orderingapp.FXMLDocumentController">
+   <tabs>
+      <Tab text="Νέα Παραγγελία">
+         <content>
+            <SplitPane dividerPositions="0.5, 0.67" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0">
+               <items>
+                  <VBox prefHeight="398.0" prefWidth="199.0">
+                     <children>
+                        <TableView fx:id="orderTable" prefHeight="200.0" prefWidth="200.0">
+                           <columns>
+                              <TableColumn fx:id="nameCol" prefWidth="107.0" text="Είδος" />
+                              <TableColumn fx:id="priceCol" prefWidth="68.0" text="Αξία" />
+                              <TableColumn fx:id="quantityCol" prefWidth="68.0" text="Ποσότητα" />
+                              <TableColumn fx:id="totalCol" prefWidth="70.0" text="Σύνολο" />
+                           </columns>
+                        </TableView>
+                        <AnchorPane prefHeight="370.0" prefWidth="397.0">
+                           <children>
+                              <Label layoutX="14.0" layoutY="14.0" text="Ποσό" />
+                              <Label fx:id="priceLabel" layoutX="258.0" layoutY="14.0" />
+                              <Label layoutX="14.0" layoutY="44.0" text="Φ.Π.Α." />
+                              <Label fx:id="taxLabel" layoutX="258.0" layoutY="44.0" text="24%" />
+                              <Separator layoutX="36.0" layoutY="73.0" prefHeight="1.0" prefWidth="235.0" />
+                              <Label layoutX="14.0" layoutY="83.0" text="Σύνολο" />
+                              <Label fx:id="totalLabel" layoutX="258.0" layoutY="83.0" />
+                              <Label layoutX="14.0" layoutY="123.0" text="Όνομα:" />
+                              <TextField fx:id="nameField" layoutX="87.0" layoutY="119.0" prefHeight="25.0" prefWidth="200.0" />
+                              <Label layoutX="14.0" layoutY="167.0" text="Διεύ/ση:" />
+                              <TextField fx:id="addressField" layoutX="87.0" layoutY="163.0" prefHeight="25.0" prefWidth="200.0" />
+                              <Button fx:id="cancelButton" layoutX="15.0" layoutY="319.0" mnemonicParsing="false" onMousePressed="#cancelOrder" text="Ακύρωση" />
+                              <Button fx:id="proceedButton" layoutX="287.0" layoutY="319.0" mnemonicParsing="false" onMousePressed="#addToOrder" text="Καταχώρηση" />
+                              <Label layoutX="15.0" layoutY="208.0" text="Σχόλια:" />
+                              <TextArea fx:id="commentsField" layoutX="86.0" layoutY="208.0" prefHeight="92.0" prefWidth="200.0" />
+                           </children>
+                        </AnchorPane>
+                     </children>
+                  </VBox>
+                  <ListView fx:id="menuList" onMouseClicked="#showOptions" prefHeight="393.0" prefWidth="0.0" />
+                  <ListView fx:id="menuOptions" onMouseClicked="#addToTable" prefHeight="200.0" prefWidth="200.0" />
+               </items>
+            </SplitPane>
+         </content></Tab>
+         <Tab text="Εκκρεμείς Παραγγελίες">
+         <content>
+            <TableView fx:id="pendingTable" onMousePressed="#openOrder" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="clientNameCol" prefWidth="180.0" text="Όνομα" />
+                <TableColumn fx:id="clientAddressCol" prefWidth="180.0" text="Διεύθυνση" />
+                  <TableColumn fx:id="commentsCol" prefWidth="330.0" text="Σχόλια" />
+              </columns>
+            </TableView>
+         </content></Tab>
+   </tabs>
+   <stylesheets>
+        <URL value="@myStyle.css" />
+   </stylesheets>
+</TabPane>
